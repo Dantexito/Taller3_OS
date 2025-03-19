@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/Procesos.dir/metrics.c.o -o Procesos 
