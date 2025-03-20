@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define MAX_PROCESOS 100  // Ajusta según sea necesario
+#define MAX_PROCESOS 100  
 
 typedef struct {
     int id;
@@ -12,6 +12,7 @@ int main() {
     FILE *archivo;
     Proceso procesos[MAX_PROCESOS];
     int contador = 0;
+    char buffer[100];  // Para leer y descartar la primera línea
 
     // Abre el archivo en modo lectura
     archivo = fopen("../procesos.txt", "r");
@@ -19,6 +20,9 @@ int main() {
         perror("Error al abrir el archivo");
         return 1;
     }
+
+    // Leer y descartar la primera línea (los nombres de las columnas)
+    fgets(buffer, sizeof(buffer), archivo);
 
     // Leer los datos del archivo
     while (fscanf(archivo, "%d %d %d", &procesos[contador].id, 
